@@ -1,0 +1,18 @@
+{
+    "name": "leonardo/site-php",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Leonardo\\SitePhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Leonardo Fidelis",
+            "email": "leonardofidelis@youbrtech.com.br"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
