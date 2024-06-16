@@ -1,0 +1,82 @@
+/* Page */
+
+html,body{
+   background-color: rgb(30, 35, 54, 1.0);
+	color: #fff;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.pl-icons .pl-social{
+	width: 32px;
+	cursor: pointer;
+}
+
+.pl-icons img{
+	width: 12px;
+}
+
+.pl-icons img:hover{
+ width: 34px;
+}
+
+.pl-button {
+  border-radius: 5px;
+  background-color: #fff;
+  border: none;
+  color: #000;
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  transition: all 0.5s;
+}
+
+.pl-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.pl-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.5s;
+}
+
+.pl-button:hover span {
+  padding-right: 10px;
+}
+
+.pl-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.pl-scroll {
+	position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin: 10px;
+    animation: 1.5s down infinite;
+}
+
+@keyframes down {
+	0% {
+		transform: translate(0);
+	}
+	20% {
+		transform: translateY(15px);
+	}
+	40% {
+		transform: translate(0);
+	}
+}
+
+
