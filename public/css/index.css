@@ -82,7 +82,7 @@ html,body{
 .pl-text-animated p::before{
     content: "";
     color: green;
-    animation: words 15s infinite
+    animation: words 10s infinite
 }
 
 .pl-text-animated p::after{
@@ -92,7 +92,7 @@ html,body{
     width: calc(100% + 12px);
     border-left: 2px solid green;
     right: -10px;
-    animation: cursor .7s infinite , type 10s steps(15) infinite;
+    animation: cursor .7s infinite , type 5s steps(15) infinite;
     background-color: rgb(30, 35, 54, 1.0);
 }
 
@@ -112,14 +112,11 @@ html,body{
 }
 
 @keyframes words {
-    0%,30%{
+    0%,50%{
         content: "Desenvolvedor";
         
     }
-    31%,70%{
-        content: "Backend";
-    }
-    71%,100%{
+    51%,100%{
         content: "Freelancer";
     }
 }
