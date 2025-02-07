@@ -1,7 +1,7 @@
 /* Page */
 
 html,body{
-   background-color: rgb(30, 35, 54, 1.0);
+    background-color: rgb(30, 35, 54, 1.0);
 	color: #fff;
 	height: 100%;
 	width: 100%;
@@ -20,43 +20,44 @@ html,body{
 }
 
 .pl-icons img:hover{
- width: 34px;
+    //width: 34px;
 }
 
 .pl-button {
-  border-radius: 5px;
-  background-color: #fff;
-  border: none;
-  color: #000;
-  text-align: center;
-  font-size: 14px;
-  padding: 10px;
-  transition: all 0.5s;
+    border-radius: 5px;
+    background-color: #fff;
+    border: none;
+    color: #000;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 10px;
+    transition: all 0.5s;
 }
 
 .pl-button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
 }
 
 .pl-button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -10px;
-  transition: 0.5s;
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -10px;
+    transition: 0.5s;
 }
 
 .pl-button:hover span {
-  padding-right: 10px;
+    padding-right: 10px;
 }
 
 .pl-button:hover span:after {
-  opacity: 1;
-  right: 0;
+    opacity: 1;
+    right: 0;
 }
 
 .pl-scroll {
@@ -67,12 +68,68 @@ html,body{
     animation: 1.5s down infinite;
 }
 
+.pl-text-animated{
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.pl-text-animated p{
+    position: relative;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.pl-text-animated p::before{
+    content: "";
+    color: green;
+    animation: words 15s infinite
+}
+
+.pl-text-animated p::after{
+    content: "";
+    position:absolute;
+    height: 100%;
+    width: calc(100% + 12px);
+    border-left: 2px solid green;
+    right: -10px;
+    animation: cursor .7s infinite , type 10s steps(15) infinite;
+    background-color: rgb(30, 35, 54, 1.0);
+}
+
+@keyframes type {
+    10%,15%,30%,35%,50%,55%,70%,75%,90%,95%{
+        width:0;
+    }
+    5%,20%,25%,40%,45%,60%,65%,80%,85% {
+        width: calc(100% +12px);
+    }
+}
+
+@keyframes cursor{
+    0%{
+        border-left: 2px solid rgb(30, 35, 54, 1.0);
+    }
+}
+
+@keyframes words {
+    0%,30%{
+        content: "Desenvolvedor";
+        
+    }
+    31%,70%{
+        content: "Backend";
+    }
+    71%,100%{
+        content: "Freelancer";
+    }
+}
+
 @keyframes down {
 	0% {
 		transform: translate(0);
 	}
 	20% {
-		transform: translateY(15px);
+		transform: translateY(7px);
 	}
 	40% {
 		transform: translate(0);
