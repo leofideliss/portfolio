@@ -8,6 +8,7 @@ html,body{
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 .pl-icons .pl-social{
@@ -17,6 +18,11 @@ html,body{
 
 .pl-icons img{
 	width: 12px;
+}
+
+.pl-exp-icons{
+    width: 24px;
+    color: #00FF00;
 }
 
 .pl-icons img:hover{
@@ -79,25 +85,69 @@ html,body{
     font-weight: 500;
 }
 
-.pl-text-animated p::before{
+.pl-text-animated p::before {
     content: "";
-    color: green;
-    animation: words 10s infinite
+    color: #00FF00;
+    animation: words 20s infinite;
 }
 
-.pl-text-animated p::after{
+.pl-text-animated p::after {
     content: "";
-    position:absolute;
+    position: absolute;
     height: 100%;
     width: calc(100% + 12px);
-    border-left: 2px solid green;
+    border-left: 2px solid #00FF00;
     right: -10px;
-    animation: cursor .7s infinite , type 5s steps(15) infinite;
+    animation: cursor 0.9s infinite, type 5s  infinite;
     background-color: rgb(30, 35, 54, 1.0);
 }
 
+.pl-exp-prof{
+    border-left: 2px solid #00FF00;
+    width: 100%;
+}
+
+.pl-exp-prof-span{
+    font-size: 28px;
+}
+
+.pl-exp-text{
+    font-size: 18px;
+}
+
+.pl-exp-animation{
+    animation: dash 5s forwards;
+}
+
+.pl-border-projects{
+    border: 1px solid #00FF00;
+    background-color: rgb(40, 35, 54, 1.0) ;
+}
+
+.observer-item{
+    transform: translateX(100%);
+}
+
+.pl-project-title{
+    color: #00FF00;
+    font-size: 30px;
+}
+
+.pl-divisor-green{
+    border-bottom: 1px solid #fff;
+}
+
+@keyframes dash {
+    0%{
+        transform: translateX(100%);
+    }
+      100%{
+        transform: translateX(0%);
+    }
+}
+
 @keyframes type {
-    10%,15%,30%,35%,50%,55%,70%,75%,90%,95%{
+	10%,15%,30%,35%,50%,55%,70%,75%,90%,95%{
         width:0;
     }
     5%,20%,25%,40%,45%,60%,65%,80%,85% {
@@ -105,19 +155,31 @@ html,body{
     }
 }
 
-@keyframes cursor{
-    0%{
-        border-left: 2px solid rgb(30, 35, 54, 1.0);
+
+@keyframes cursor {
+    50% {
+        opacity: 0;
     }
 }
 
 @keyframes words {
-    0%,50%{
+    0%, 25% {
         content: "Desenvolvedor";
-        
     }
-    51%,100%{
+    26%, 50% {
+        content: "Programador PHP|Laravel";
+    }
+    51%, 75% {
+        content: "Desenvolvedor de Microsserviços";
+    }
+    76%, 100% {
         content: "Freelancer";
+    }
+}
+
+@keyframes cursor{
+    0%{
+        border-left: 2px solid rgb(30, 35, 54, 1.0);
     }
 }
 
