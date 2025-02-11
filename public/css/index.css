@@ -119,6 +119,18 @@ html,body{
     animation: dash 5s forwards;
 }
 
+@media (max-width:768px){
+    .pl-exp-animation{
+        animation: none;
+    }
+  
+    .observer-item{
+        transform: none !important;
+        overflow: visible;
+    }
+
+}
+
 .pl-border-projects{
     border: 1px solid #00FF00;
     background-color: rgb(40, 35, 54, 1.0) ;
@@ -175,7 +187,7 @@ html,body{
         content: "Programador PHP|Laravel";
     }
     51%, 75% {
-        content: "Desenvolvedor de Microsserviços";
+        content: "Microsserviços";
     }
     76%, 100% {
         content: "Freelancer";
@@ -200,4 +212,26 @@ html,body{
 	}
 }
 
+@media (max-width:768px){
+    .pl-exp-animation{
+        animation: none;
+    }
+  
+    .observer-item{
+        transform: none !important;
+        overflow: visible;
+    }
 
+    .pl-exp-text{
+        word-wrap: break-word;
+    }
+
+    .pl-exp-prof-span{
+        font-size: 25px;
+    }
+
+    .pl-exp-icons{
+        width: 18px;
+    }
+
+}
