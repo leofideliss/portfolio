@@ -137,6 +137,11 @@ html,body{
     border-bottom: 1px solid #fff;
 }
 
+.pl-contact{
+    color: #00FF00 !important;
+    text-decoration:none !important;
+}
+
 @keyframes dash {
     0%{
         transform: translateX(100%);
