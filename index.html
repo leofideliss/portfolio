@@ -1,164 +1,459 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Descrição do portfólio de Leonardo Fidelis">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
-    <title>Leonardo Fidelis</title>
-	<link rel="icon" type="image/png" href="./media/code.svg">	
-  </head>
-  <body>
-    <div class="container-fluid h-100">
-      <section class="row justify-content-around h-100 align-content-center">
-        <div class="col-lg-8 col-md-8 col-12">
-          <h1 class="display-1">Leonardo Fidelis</h1>
-          <div class="pl-text-animated d-flex">
-            <p class=""></p>
-          </div>
-          <div class="pl-icons my-2">
-            <a href="https://www.linkedin.com/in/leonardo-fidelis-a7b43a211/" target="_blank" class="me-2"><img class="pl-social" src="./media/linkedin.svg"></a>   
-            <a href="https://github.com/leofideliss" target="_blank" class="me-2"><img class="pl-social" src="./media/github.svg"></a>               
-          </div>
-        </div>
-        <div>
-          <img class="pl-scroll d-sm-none d-md-block d-lg-block d-none" src="./media/arrow-down.svg" width="32px">
-        </div>
-      </section> 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Leonardo Fidelis — Desenvolvedor Backend (PHP/Laravel, Go, Node.js). Sistemas de alta demanda, filas, processamento assíncrono e integrações de pagamento.">
+<meta name="author" content="Leonardo Fidelis">
+<title>Leonardo Fidelis · Desenvolvedor Backend</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230D1017'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%23E8A33D' text-anchor='middle'%3ELF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D1017;
+    --surface:#141A22;
+    --surface-2:#1A212B;
+    --line:#262E39;
+    --line-soft:#1E2530;
+    --text:#E7EDF4;
+    --muted:#9AA7B4;
+    --faint:#697585;
+    --accent:#E8A33D;
+    --accent-dim:rgba(232,163,61,.12);
+    --accent-line:rgba(232,163,61,.35);
+    --sans:'Inter',system-ui,sans-serif;
+    --display:'Sora',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --maxw:1080px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  /* subtle grid texture behind everything */
+  body::before{
+    content:"";
+    position:fixed;inset:0;z-index:-1;
+    background-image:
+      linear-gradient(var(--line-soft) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 0%,transparent 75%);
+    mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 0%,transparent 75%);
+    opacity:.5;
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  a{color:inherit;text-decoration:none}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(13,16,23,.72);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:14px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{font-family:var(--mono);font-weight:600;font-size:.95rem;letter-spacing:.02em;display:flex;align-items:center;gap:9px}
+  .brand .dot{width:8px;height:8px;border-radius:2px;background:var(--accent);box-shadow:0 0 12px var(--accent-line)}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:.9rem;color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{
+    font-family:var(--mono);font-size:.82rem;color:var(--accent)!important;
+    border:1px solid var(--accent-line);border-radius:7px;padding:7px 14px;
+    transition:background .2s,border-color .2s;
+  }
+  .nav-cta:hover{background:var(--accent-dim);border-color:var(--accent)}
+  .nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:7px;padding:8px 10px;cursor:pointer}
+  .nav-toggle span{display:block;width:18px;height:2px;background:var(--text);margin:3px 0;border-radius:2px}
+
+  @media(max-width:720px){
+    .nav-links{
+      position:fixed;inset:57px 0 auto 0;flex-direction:column;gap:0;
+      background:var(--bg);border-bottom:1px solid var(--line);
+      padding:8px 28px 18px;transform:translateY(-120%);transition:transform .28s ease;
+    }
+    .nav-links.open{transform:translateY(0)}
+    .nav-links a{padding:12px 0;width:100%;border-bottom:1px solid var(--line-soft)}
+    .nav-cta{margin-top:12px;text-align:center}
+    .nav-toggle{display:block}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:96px 0 80px}
+  .hero .eyebrow{
+    font-family:var(--mono);font-size:.86rem;color:var(--accent);
+    display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;
+  }
+  .hero .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent)}
+  .hero h1{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.02;
+    letter-spacing:-.02em;margin-bottom:18px;
+  }
+  .hero .role{
+    font-size:clamp(1.05rem,2.5vw,1.4rem);color:var(--muted);
+    font-weight:400;max-width:60ch;margin-bottom:14px;
+  }
+  .hero .role b{color:var(--text);font-weight:600}
+  .hero .lead{color:var(--faint);max-width:62ch;font-size:1.02rem;margin-bottom:38px}
+
+  .hero-social{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-social a{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--mono);font-size:.86rem;color:var(--muted);
+    border:1px solid var(--line);border-radius:8px;padding:9px 15px;
+    background:var(--surface);transition:border-color .2s,color .2s,background .2s;
+  }
+  .hero-social a:hover{color:var(--text);border-color:var(--faint);background:var(--surface-2)}
+  .hero-social svg{width:16px;height:16px;fill:currentColor}
+
+  /* ---------- PROFILE SPEC CARD ---------- */
+  .spec{
+    margin-top:52px;max-width:520px;
+    border:1px solid var(--line);border-radius:13px;
+    background:linear-gradient(180deg,var(--surface) 0%,rgba(20,26,34,.45) 100%);
+    overflow:hidden;
+  }
+  .spec-head{
+    display:flex;align-items:center;gap:10px;
+    padding:11px 18px;border-bottom:1px solid var(--line-soft);
+    font-family:var(--mono);font-size:.76rem;color:var(--faint);
+  }
+  .spec-head .pip{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  @media(prefers-reduced-motion:reduce){.spec-head .pip{animation:none}}
+  .srow{display:flex;gap:16px;padding:12px 18px;border-bottom:1px solid var(--line-soft);font-size:.9rem}
+  .srow:last-child{border-bottom:none}
+  .srow .f{font-family:var(--mono);color:var(--faint);width:96px;flex-shrink:0;font-size:.82rem}
+  .srow .v{color:var(--text)}
+  .srow .v.on{color:var(--accent);font-family:var(--mono);font-size:.86rem}
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section.blk{padding:70px 0;border-top:1px solid var(--line-soft)}
+  .sec-head{display:flex;align-items:center;gap:16px;margin-bottom:44px}
+  .sec-head .idx{width:24px;height:2px;background:var(--accent);border-radius:2px;flex-shrink:0}
+  .sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,3.5vw,2.1rem);letter-spacing:-.01em}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:52px}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:40px}}
+  .about p{color:var(--muted);max-width:60ch;margin-bottom:18px}
+  .about p b{color:var(--text);font-weight:600}
+  .stack-group{margin-bottom:22px}
+  .stack-group h3{font-family:var(--mono);font-size:.78rem;color:var(--faint);font-weight:500;margin-bottom:11px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    font-family:var(--mono);font-size:.8rem;color:var(--muted);
+    border:1px solid var(--line);border-radius:6px;padding:5px 10px;
+    background:var(--surface);
+  }
+  .chip.key{color:var(--accent);border-color:var(--accent-line);background:var(--accent-dim)}
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline{position:relative;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:4px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .job{position:relative;padding-bottom:44px}
+  .job:last-child{padding-bottom:0}
+  .job::before{content:"";position:absolute;left:-26px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:2px solid var(--faint)}
+  .job.now::before{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+  .job .when{font-family:var(--mono);font-size:.8rem;color:var(--accent);margin-bottom:6px}
+  .job h3{font-family:var(--display);font-size:1.22rem;font-weight:600;margin-bottom:2px}
+  .job .co{color:var(--muted);font-size:.95rem;margin-bottom:16px}
+  .job ul{list-style:none;display:flex;flex-direction:column;gap:9px;max-width:64ch}
+  .job li{position:relative;padding-left:20px;color:var(--muted);font-size:.96rem}
+  .job li::before{content:"";position:absolute;left:2px;top:.65em;width:6px;height:1px;background:var(--accent)}
+
+  /* ---------- PROJECTS ---------- */
+  .proj{
+    display:grid;grid-template-columns:270px 1fr;gap:40px;
+    padding:34px 0;border-top:1px solid var(--line-soft);
+  }
+  .proj:first-of-type{border-top:none}
+  @media(max-width:820px){.proj{grid-template-columns:1fr;gap:18px;padding:30px 0}}
+  .proj-side .pname{font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:6px}
+  .proj-side .ptag{font-family:var(--mono);font-size:.76rem;color:var(--accent);margin-bottom:16px}
+  .proj-side .pstack{display:flex;flex-wrap:wrap;gap:6px}
+  .proj-side .pstack span{font-family:var(--mono);font-size:.72rem;color:var(--faint);border:1px solid var(--line);border-radius:5px;padding:3px 7px}
+  .proj-body p{color:var(--muted);font-size:.97rem;max-width:64ch;margin-bottom:14px}
+  .proj-body .intg{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+  .proj-body .intg span{font-size:.78rem;color:var(--muted);background:var(--surface-2);border:1px solid var(--line-soft);border-radius:6px;padding:4px 9px}
+
+  /* ---------- CONTACT ---------- */
+  .contact{padding:76px 0 34px;border-top:1px solid var(--line-soft)}
+  .contact h2{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:600;letter-spacing:-.02em;margin-bottom:14px;max-width:20ch}
+  .contact .sub{color:var(--muted);max-width:52ch;margin-bottom:34px}
+  .contact-rows{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  @media(max-width:620px){.contact-rows{grid-template-columns:1fr}}
+  .crow{background:var(--bg);padding:20px 22px;display:flex;align-items:center;gap:14px;transition:background .2s}
+  a.crow:hover{background:var(--surface)}
+  .crow svg{width:20px;height:20px;fill:var(--accent);flex-shrink:0}
+  .crow .k{font-family:var(--mono);font-size:.74rem;color:var(--faint);margin-bottom:2px}
+  .crow .v{font-size:.95rem;color:var(--text);word-break:break-all}
+
+  footer.foot{max-width:var(--maxw);margin:0 auto;padding:30px 28px 44px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line-soft);margin-top:40px}
+  footer.foot span{font-family:var(--mono);font-size:.78rem;color:var(--faint)}
+
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="dot"></span>leonardo_fidelis</a>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato" class="nav-cta">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap" id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="eyebrow">Desenvolvedor Backend</span>
+    <h1>Leonardo Fidelis</h1>
+    <p class="role">Construo o backend de sistemas de <b>alta demanda</b>: APIs, microsserviços e integrações, com <b>PHP/Laravel</b>, <b>Go</b> e <b>Node.js</b>.</p>
+    <p class="lead">Trabalho com o que roda por baixo: filas, processamento assíncrono, evolução de sistemas em produção e bancos relacionais e não relacionais. Gosto de entender o problema a fundo e assumir o que entrego, do banco de dados à produção.</p>
+
+    <div class="hero-social">
+      <a href="https://github.com/leofideliss" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+        github.com/leofideliss
+      </a>
+      <a href="https://www.linkedin.com/in/leonardo-fidelis-a7b43a211/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0z"/></svg>
+        linkedin.com/in/leonardo-fidelis-a7b43a211
+      </a>
     </div>
-	<div class="container-fluid d-flex flex-column">
-	  <div class="row mt-5 mb-3 justify-content-around align-content-center ">
-		<div class="col-lg-8 col-md-8 col-12">
-		  <h1 class="pl-exp-prof">Sobre mim</h1>
-		  <p class="pl-exp-text mt-5">Sou formado em Sistemas de Informação e atuo como desenvolvedor há mais de três anos. Minha preferência é pelo desenvolvimento backend, mas também tenho uma boa base em frontend. Atualmente, trabalho com a criação e manutenção de microsserviços em PHP utilizando o framework Laravel.
 
-			Estou sempre em busca de aprimorar minhas habilidades. No momento, estou explorando a linguagem Go e me aprofundando no universo do sistema operacional Linux. Além disso, estou continuamente aperfeiçoando meu inglês para expandir minhas possibilidades profissionais.
+    <!-- PROFILE SPEC -->
+    <div class="spec">
+      <div class="spec-head"><span class="pip"></span>perfil</div>
+      <div class="srow"><span class="f">foco</span><span class="v">Desenvolvimento backend</span></div>
+      <div class="srow"><span class="f">stack</span><span class="v">PHP, Laravel, Go, Node.js</span></div>
+      <div class="srow"><span class="f">áreas</span><span class="v">APIs, microsserviços, mensageria e integrações</span></div>
+      <div class="srow"><span class="f">base</span><span class="v">Presidente Prudente, SP · remoto</span></div>
+      <div class="srow"><span class="f">status</span><span class="v on">aberto a novas oportunidades</span></div>
+    </div>
+  </section>
 
-			Acredito que a tecnologia é um meio poderoso para resolver problemas reais, e minha motivação é entregar soluções eficientes e bem estruturadas. </p>
-          <p class="pl-exp-text"> Linguagens e Tecnologias:</p>
-		  <div style="pl-div-stacks">
-			<ul class="pl-ul-stacks">
-			  <li class="pl-li-stacks">PHP</li>
-			  <li class="pl-li-stacks ">Go</li>
-			  <li class="pl-li-stacks ">C</li>
-			  <li class="pl-li-stacks ">Laravel</li>
-			  <li class="pl-li-stacks ">HTML</li>
-			  <li class="pl-li-stacks ">CSS</li>
-			  <li class="pl-li-stacks ">JS</li>
-			  <li class="pl-li-stacks ">Bootstrap</li>
-			  <li class="pl-li-stacks ">Docker</li>
-			  <li class="pl-li-stacks ">NodeJs</li>
-			  <li class="pl-li-stacks ">Redis</li>
-			  <li class="pl-li-stacks ">Mysql</li>
-			  <li class="pl-li-stacks ">MongoDB</li>
-			</ul>
-		  </div>
+  <!-- SOBRE -->
+  <section class="blk" id="sobre">
+    <div class="sec-head"><span class="idx"></span><h2>Sobre mim</h2></div>
+    <div class="about-grid">
+      <div class="about">
+        <p>Desenvolvedor backend com foco em <b>PHP/Laravel</b> e experiência em <b>Go</b> e <b>Node.js</b>, especializado em sistemas de alta demanda onde performance, escala e confiabilidade importam de verdade.</p>
+        <p>No dia a dia, trabalho com <b>processamento assíncrono</b> e mensageria (Redis, AWS SQS), microsserviços, integrações e evolução de sistemas legados sem interromper a operação. Gosto de entender o problema a fundo, participar das decisões de arquitetura e assumir responsabilidade ponta a ponta sobre o que entrego, do banco de dados à produção.</p>
+        <p>Sou formado em <b>Sistemas de Informação</b> e, antes de migrar para o desenvolvimento, passei alguns anos na base da TI: suporte a usuários, redes, gateways, aquisição de software e sites institucionais. Essa vivência me deu uma noção prática de infraestrutura que carrego até hoje.</p>
+        <p>Estou sempre aprimorando. No momento, me aprofundo em Go, no ecossistema Linux e no inglês, buscando resolver problemas técnicos reais e continuar crescendo em ambientes que exigem robustez e boas decisões de arquitetura.</p>
+      </div>
+      <div class="stacks">
+        <div class="stack-group">
+          <h3>// linguagens</h3>
+          <div class="chips">
+            <span class="chip key">PHP</span><span class="chip key">Go</span>
+            <span class="chip">JavaScript</span><span class="chip">SQL</span><span class="chip">C</span>
+          </div>
+        </div>
+        <div class="stack-group">
+          <h3>// frameworks &amp; libs</h3>
+          <div class="chips">
+            <span class="chip key">Laravel</span><span class="chip">Node.js</span>
+            <span class="chip">jQuery</span><span class="chip">Bootstrap</span>
+          </div>
+        </div>
+        <div class="stack-group">
+          <h3>// dados</h3>
+          <div class="chips">
+            <span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span>
+          </div>
+        </div>
+        <div class="stack-group">
+          <h3>// infra &amp; mensageria</h3>
+          <div class="chips">
+            <span class="chip">AWS SQS</span><span class="chip">Docker</span>
+            <span class="chip">Cloudflare</span><span class="chip">Linux</span><span class="chip">Git</span>
+          </div>
+        </div>
+        <div class="stack-group">
+          <h3>// pagamentos</h3>
+          <div class="chips">
+            <span class="chip key">Pix</span><span class="chip">DICT</span><span class="chip">Boletos</span>
+            <span class="chip">Stripe</span><span class="chip">Mercado Pago</span><span class="chip">PayPal</span><span class="chip">Cripto</span>
+          </div>
+        </div>
+        <div class="stack-group">
+          <h3>// domínio &amp; compliance</h3>
+          <div class="chips">
+            <span class="chip">BACEN</span><span class="chip">SPI</span><span class="chip">BaaS</span>
+            <span class="chip">Participante indireto</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-		</div>
-	  </div>
-	  <div class="row justify-content-around align-content-center ">
-		<div class="col-lg-8 col-md-8 col-12">
-		  <p> </p>
-		</div>
-	  </div>
-	</div>
-	<div class="container-fluid  justify-content-center d-flex flex-column overflow-hidden">
-	  <div class="row mb-5 mt-5 justify-content-around align-content-center ">
-		<div class="col-lg-8 col-md-8 col-12">
-          <h1 class="pl-exp-prof">Experiência Profissional</h1>
-		</div>
-	  </div>
-	  <div class="row mb-5 justify-content-around align-content-center  observer-item">
-		<div class="col-lg-8 col-md-8 col-12 pl-exp-text">
-		  <div>
-			<div class="d-flex">
-			  <img class="pl-exp-icons" src="./media/code.svg"/>
-			  <span class="pl-exp-prof-span ms-2">Desenvolvedor de Software</span>
-			</div>
-			<p>Cronos Soluções para Fintechs  (03/23 - Atualmente)</p>
-			<p><b>Stack:</b> PHP|Laravel|Mysql|MongoDB|Redis|HTML|CSS|Js</p>
-			<p><b>Sobre:</b> Iniciei na criação de um SaaS como Full Stack , e atualmente estou focado na parte de backend com o desenvolvimento de microsserviços.</p>
-		  </div>
-		</div>
-	  </div>
-	  
-	  <div class="row mb-5 justify-content-around align-content-center overflow-hidden observer-item">
-		<div class="col-lg-8 col-md-8 col-12 pl-exp-text">
-		  <div>
-			<div class="d-flex">
-			  <img class="pl-exp-icons" src="./media/gear.svg"/>
-			  <span class="pl-exp-prof-span ms-2">Analista de Suporte</span>
-			</div>
-			<p>Curtume Touro LTDA. (02/19 - 03/23)</p>
-			<p> <b>Stack:</b> PHP|Laravel|Mysql|HTML|CSS|Js</p>
-			<p> <b>Sobre:</b> Foco no suporte para usuários da empresa: como auxiliar na utilização dos equipamentos, desenvolvimento de sistemas internos, aquisição de softwares e equipamentos, infraestrutura de redes.</p>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	<div class="container-fluid  d-flex flex-column">
-	  <div class="row mt-5 mb-5 justify-content-around align-content-center ">
-		<div class="col-lg-8 col-md-8 col-12">
-          <h1 class="pl-exp-prof">Projetos</h1>
-		</div>
-	  </div>
-	  <div class="row align-content-center justify-content-center">
-		<div class="col-lg-8 col-md-8 col-12 pl-exp-text">
-		  <div>
-			<span class="pl-project-title">PageWin</span>
-			<p>SaaS para criação de sites e conversão de sites para Apps com PWA, foco na caputra de leads e disparo de Push Notifications.</p>
-			<p> <b>Stack:</b> PHP|Laravel|HTML|CSS|Bootstrap|Js|Nodejs|Mysql</p>
-			<p> <b>Sobre o projeto:</b> Atuei no desenvolvimento do projeto de ponta a ponta , desde a modelagem do banco de dados , backend até o frontend.</p>
-			<p>Trabalhei com diversar bibliotecas JS como: DataTable.js , Rezisable.js , Sortable.js , FormValidation.js , Dropzone.js , Toast.js.</p>
-			<p>Também executei diversas intgrações como:</p>
-			<ul>
-			  <li> Integração com Cloudflare</li>
-			  <li> Integração com Google Auth</li>
-			  <li> Integração com AWS SQS</li>
-			  <li> Integração com Paypal (Cartão de crédito)</li>
-			  <li> Integração com Mercado Pago (Pix/Cartão de crédito)</li>
-			  <li> Integração com Cronos Bank (Pix) </li>
-			</ul>
-		  </div>
-		</div>
-		<div class="col-lg-8 col-md-8 col-10 pl-exp-text mb-5 mt-5 pl-divisor-green">
-		</div>
-		<div class="col-lg-8 col-md-8 col-12 pl-exp-text">
-		  <div>
-			<span class="pl-project-title">Imobiliária</span>
-			<p>SaaS focada na venda de imovéis</p>
-			<p> <b>Stack:</b> PHP|Laravel|HTML|Mysql|Redis|CSS|Bootstrap|Js</p>
-			<p> <b>Sobre:</b>A ideia do projeto é permitir que vendedores, corretores e fotógrafos consigam executar o processo de venda ou aluguel de imóveis através da plataforma de forma dinâmica. Por exemplo: uma pessoa indica o endereço de um imóvel na plataforma; um corretor assume o caso, analisa e realiza os processos necessários; em seguida, um fotógrafo inicia a próxima etapa, e o imóvel fica disponível para venda. Ao final do processo, em caso de venda, todos recebem uma porcentagem proporcional.</p>
-			<p>Também executei diversas intgrações como:</p>
-			<ul>
-			  <li> Integração com Google Maps API</li>
-			  <li> Integração com Google Places API</li>
-			  <li> Integração com Google Geocoding API</li>
-			  <li> Integração com Google Auth</li>
-			  <li> Integração com outras plataformas de imóveis como Zap Imovéis(via XML)</li>
-			  <li> Integração com Bitrix24</li>
-			</ul>
-		  </div>
-		</div>
-	  </div>
-	</div>	
-	<div class="container-fluid d-flex flex-column">
-	  <div class="row mt-5 mb-3 justify-content-around align-content-center ">
-		<div class="col-lg-8 col-md-8 col-12">
-		  <h1 class="pl-exp-prof ms-1">Contato</h1>
-		</div>
-	  </div>
-	  <div class="row justify-content-around align-content-center ">
-		<div class="col-lg-8 col-md-8 col-12">
-		  <p> <b>Linkedin:</b> <a class="pl-contact" href="https://www.linkedin.com/in/leonardo-fidelis-a7b43a211/">https://www.linkedin.com/in/leonardo-fidelis-a7b43a211/ </a></p>
-		  <p> <b>Email:</b> <span class="pl-contact">leofipp@hotmail.com</span></p>
-		  <p> <b>Telefone:</b> <span class="pl-contact">(018)99709-4034 </span> </p>
-		</div>
-	  </div>
-	</div>
-  </body>
+  <!-- EXPERIENCIA -->
+  <section class="blk" id="experiencia">
+    <div class="sec-head"><span class="idx"></span><h2>Experiência profissional</h2></div>
+    <div class="timeline">
+      <div class="job now">
+        <div class="when">03/2023 — atual</div>
+        <h3>Desenvolvedor Backend</h3>
+        <div class="co">Cronos Fintech · Presidente Prudente, SP</div>
+        <ul>
+          <li>Como tech lead do backend, respondo pela direção técnica, arquitetura, code review e padrões de projeto, atuando diretamente sobre os fluxos financeiros críticos da plataforma.</li>
+          <li>Integrações de pagamento de ponta a ponta: PIX e DICT, geração de boletos, pagamento de contas, saldos e extratos, atuando tanto via BaaS quanto como participante indireto.</li>
+          <li>Aplicação de regras e normas do BACEN no SPI/DICT: consulta de chaves, buckets, DICT rates e relatórios regulatórios (como ACCS001 e TRKC002).</li>
+          <li>Condução de integrações com clientes de ponta a ponta, do entendimento do negócio à implementação e aos ajustes para o modelo de cada cliente funcionar corretamente.</li>
+          <li>Cuidado com consistência de dados (concorrência de memória e de escrita no banco) e com observabilidade: logs estruturados, políticas de armazenamento, mascaramento de dados sensíveis e restrição de acessos.</li>
+          <li>Microsserviços em Laravel 10 e Go, com processamento assíncrono e filas (Redis, AWS SQS) sustentando os picos de transação; evolução do sistema legado (framework proprietário em PHP) e modelagem em MySQL e MongoDB.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="when">02/2019 — 03/2023</div>
+        <h3>Analista de Suporte / TI</h3>
+        <div class="co">Curtume Tuoro LTDA. · Presidente Prudente, SP</div>
+        <ul>
+          <li>Responsável pelo setor de TI: suporte a usuários, gestão de licenças e contas e manutenção da rede local, gateways e infraestrutura.</li>
+          <li>Desenvolvimento de sistemas internos e sites institucionais, meu primeiro contato prático com desenvolvimento web.</li>
+          <li>Apoio na aquisição de softwares e equipamentos, mantendo a estrutura de tecnologia da empresa operacional.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-  <script src="./js/exp_prof.js"> </script>
+  <!-- PROJETOS -->
+  <section class="blk" id="projetos">
+    <div class="sec-head"><span class="idx"></span><h2>Projetos</h2></div>
 
+    <div class="proj">
+      <div class="proj-side">
+        <div class="pname">Serviço de Notificações</div>
+        <div class="ptag">Node.js · ecossistema interno</div>
+        <div class="pstack"><span>Node.js</span><span>MongoDB</span><span>Redis</span><span>PM2</span></div>
+      </div>
+      <div class="proj-body">
+        <p>Serviço central de notificações do ecossistema, iniciado com push e ampliado para SMS, e-mail e webhooks. Atuei na arquitetura, na criação dos CRUDs e na integração via API com os demais serviços.</p>
+        <p>Remodelei o código para separar cada fila em um processo independente (gerenciados com PM2), de forma que uma carga não afetasse o desempenho da outra nem o da API, resultando em processos isolados para API, push, SMS, e-mail e webhook. Inclui política de retry, armazenamento de logs e APIs para consulta do status de cada notificação.</p>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-side">
+        <div class="pname">Plataforma de Proxies</div>
+        <div class="ptag">Freelance · em produção · +100 clientes</div>
+        <div class="pstack"><span>PHP 8+</span><span>Laravel 10</span><span>MySQL</span><span>Redis</span><span>Stripe</span><span>i18n</span></div>
+      </div>
+      <div class="proj-body">
+        <p>Aplicação completa desenvolvida ponta a ponta em 4 meses: mapeamento do produto, modelagem de banco, servidor, deploy e ambientes separados (sandbox e produção).</p>
+        <p>Integrei pagamentos com cartão (Stripe) e criptomoedas, com validação de cotação do dólar em tempo real, além de provedores de proxies (HTTPS / SOCKS5 / OpenVPN), autenticação Google e consulta de CEP. Implementei internacionalização (i18n) para russo, português e inglês.</p>
+        <div class="intg">
+          <span>Stripe</span><span>Cripto</span><span>Proxies HTTPS/SOCKS5/OpenVPN</span><span>Google Auth</span><span>i18n</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-side">
+        <div class="pname">PageWin</div>
+        <div class="ptag">SaaS · projeto da empresa</div>
+        <div class="pstack"><span>Laravel</span><span>Node.js</span><span>MySQL</span><span>Bootstrap</span><span>JS</span></div>
+      </div>
+      <div class="proj-body">
+        <p>Plataforma para criação de sites e conversão em apps PWA, com foco em captura de leads e disparo de push notifications. Atuei ponta a ponta, da modelagem do banco ao frontend, trabalhando com bibliotecas como DataTables, Sortable, Dropzone e FormValidation.</p>
+        <div class="intg">
+          <span>Cloudflare</span><span>Google Auth</span><span>AWS SQS</span><span>PayPal</span><span>Mercado Pago (Pix/Cartão)</span><span>Cronos Bank (Pix)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-side">
+        <div class="pname">Plataforma Imobiliária</div>
+        <div class="ptag">Projeto · 2023</div>
+        <div class="pstack"><span>PHP</span><span>Laravel</span><span>MySQL</span><span>Redis</span><span>Bootstrap</span><span>JS</span></div>
+      </div>
+      <div class="proj-body">
+        <p>Plataforma para automatizar venda e aluguel de imóveis, conectando vendedores, corretores e fotógrafos em um fluxo único: um imóvel é indicado, um corretor assume, um fotógrafo dá sequência e o imóvel entra à venda, com repasse proporcional na conclusão.</p>
+        <div class="intg">
+          <span>Google Maps</span><span>Places</span><span>Geocoding</span><span>Google Auth</span><span>Zap Imóveis (XML)</span><span>Bitrix24</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contact" id="contato">
+    <h2>Vamos construir algo sólido.</h2>
+    <p class="sub">Aberto a novas oportunidades de backend. Pode me chamar por qualquer um dos canais abaixo.</p>
+    <div class="contact-rows">
+      <a class="crow" href="mailto:leomatos25@gmail.com">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+        <div><div class="k">e-mail</div><div class="v">leomatos25@gmail.com</div></div>
+      </a>
+      <a class="crow" href="tel:+5518997094034">
+        <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1L6.6 10.8Z"/></svg>
+        <div><div class="k">telefone</div><div class="v">(18) 99709-4034</div></div>
+      </a>
+      <a class="crow" href="https://www.linkedin.com/in/leonardo-fidelis-a7b43a211/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0z"/></svg>
+        <div><div class="k">linkedin</div><div class="v">in/leonardo-fidelis-a7b43a211</div></div>
+      </a>
+      <a class="crow" href="https://github.com/leofideliss" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+        <div><div class="k">github</div><div class="v">github.com/leofideliss</div></div>
+      </a>
+    </div>
+  </section>
+</div>
+
+<footer class="foot">
+  <span>© <span id="yr"></span> Leonardo Fidelis</span>
+  <span>Backend · PHP/Laravel · Go · Node.js</span>
+</footer>
+
+<script>
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // mobile nav
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('menu');
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+</script>
+</body>
 </html>
