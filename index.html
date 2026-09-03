@@ -191,7 +191,12 @@
   .proj:first-of-type{border-top:none}
   @media(max-width:820px){.proj{grid-template-columns:1fr;gap:18px;padding:30px 0}}
   .proj-side .pname{font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:6px}
-  .proj-side .ptag{font-family:var(--mono);font-size:.76rem;color:var(--accent);margin-bottom:16px}
+  .proj-side .ptag{font-family:var(--mono);font-size:.76rem;color:var(--accent);margin-bottom:14px}
+  .proj-side .live{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:.6rem;color:var(--accent);border:1px solid var(--accent-line);border-radius:5px;padding:2px 7px;vertical-align:middle;margin-left:8px;letter-spacing:.03em}
+  .proj-side .live::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);animation:pulse 2.6s ease-in-out infinite}
+  .proj-side .plink{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.78rem;color:var(--accent);margin-bottom:16px;border:1px solid var(--accent-line);border-radius:7px;padding:7px 12px;transition:background .2s,border-color .2s}
+  .proj-side .plink:hover{background:var(--accent-dim);border-color:var(--accent)}
+  .proj-side .plink svg{width:13px;height:13px;fill:currentColor}
   .proj-side .pstack{display:flex;flex-wrap:wrap;gap:6px}
   .proj-side .pstack span{font-family:var(--mono);font-size:.72rem;color:var(--faint);border:1px solid var(--line);border-radius:5px;padding:3px 7px}
   .proj-body p{color:var(--muted);font-size:.97rem;max-width:64ch;margin-bottom:14px}
@@ -354,6 +359,25 @@
 
     <div class="proj">
       <div class="proj-side">
+        <div class="pname">NafeProxy <span class="live">ao vivo</span></div>
+        <div class="ptag">Freelance · em produção · +100 clientes</div>
+        <a class="plink" href="https://app.nafeproxys.online/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.3 9.29 1.42 1.42L19 6.41V10h2V3h-7ZM19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg>
+          app.nafeproxys.online
+        </a>
+        <div class="pstack"><span>PHP 8+</span><span>Laravel 10</span><span>MySQL</span><span>Redis</span><span>Stripe</span><span>i18n</span></div>
+      </div>
+      <div class="proj-body">
+        <p>Projeto mais recente, desenvolvido ponta a ponta e em uso por cliente em produção. Cuidei de tudo: mapeamento do produto, modelagem de banco, servidor, deploy e ambientes separados (sandbox e produção), entregue em 4 meses.</p>
+        <p>Integrei pagamentos com cartão (Stripe) e criptomoedas, com validação de cotação do dólar em tempo real, além de provedores de proxies (HTTPS / SOCKS5 / OpenVPN), autenticação Google e consulta de CEP. Implementei internacionalização (i18n) para russo, português e inglês.</p>
+        <div class="intg">
+          <span>Stripe</span><span>Cripto</span><span>Proxies HTTPS/SOCKS5/OpenVPN</span><span>Google Auth</span><span>i18n</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-side">
         <div class="pname">Serviço de Notificações</div>
         <div class="ptag">Node.js · ecossistema interno</div>
         <div class="pstack"><span>Node.js</span><span>MongoDB</span><span>Redis</span><span>PM2</span></div>
@@ -361,21 +385,6 @@
       <div class="proj-body">
         <p>Serviço central de notificações do ecossistema, iniciado com push e ampliado para SMS, e-mail e webhooks. Atuei na arquitetura, na criação dos CRUDs e na integração via API com os demais serviços.</p>
         <p>Remodelei o código para separar cada fila em um processo independente (gerenciados com PM2), de forma que uma carga não afetasse o desempenho da outra nem o da API, resultando em processos isolados para API, push, SMS, e-mail e webhook. Inclui política de retry, armazenamento de logs e APIs para consulta do status de cada notificação.</p>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="proj-side">
-        <div class="pname">Plataforma de Proxies</div>
-        <div class="ptag">Freelance · em produção · +100 clientes</div>
-        <div class="pstack"><span>PHP 8+</span><span>Laravel 10</span><span>MySQL</span><span>Redis</span><span>Stripe</span><span>i18n</span></div>
-      </div>
-      <div class="proj-body">
-        <p>Aplicação completa desenvolvida ponta a ponta em 4 meses: mapeamento do produto, modelagem de banco, servidor, deploy e ambientes separados (sandbox e produção).</p>
-        <p>Integrei pagamentos com cartão (Stripe) e criptomoedas, com validação de cotação do dólar em tempo real, além de provedores de proxies (HTTPS / SOCKS5 / OpenVPN), autenticação Google e consulta de CEP. Implementei internacionalização (i18n) para russo, português e inglês.</p>
-        <div class="intg">
-          <span>Stripe</span><span>Cripto</span><span>Proxies HTTPS/SOCKS5/OpenVPN</span><span>Google Auth</span><span>i18n</span>
-        </div>
       </div>
     </div>
 
